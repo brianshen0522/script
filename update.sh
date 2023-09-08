@@ -1,5 +1,8 @@
 #!/bin/bash
-sudo apt-get clean -y
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get autopurge -y
+echo "sudo apt-get clean -y" > update.sh
+echo "sudo apt-get update -y" > update.sh
+echo "sudo apt-get upgrade -y" > update.sh
+echo "sudo apt-get autopurge -y" > update.sh
+
+chmod +x update.sh
+./update.sh
