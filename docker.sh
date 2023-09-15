@@ -1,16 +1,17 @@
 #!/bin/bash
 . /etc/os-release 
 
-sudo apt-get remove -y docker docker-engine docker.io containerd runc
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
 sudo apt-get update
 sudo apt-get install -y \
     ca-certificates \
     curl \
     gnupg
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+
 
 if [ $ID == "debian" ]; then
-	sudo mkdir -m 0755 -p /etc/apt/keyrings
 	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 	echo \
@@ -20,7 +21,6 @@ if [ $ID == "debian" ]; then
 fi
 
 if [ $ID == "ubuntu" ]; then
-	sudo mkdir -m 0755 -p /etc/apt/keyrings
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 	echo \
@@ -36,5 +36,5 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 sudo usermod -G docker -a $USER
 
-sudo docker volume create portainer_data
-sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+# sudo docker volume create portainer_data
+# sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
