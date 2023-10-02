@@ -8,6 +8,7 @@ Group=root
 ExecStart="command start"
 WorkingDirectory=DIR_PATH
 Environment="Var=varable"
+ExecStartPre=/bin/sleep 15
 
 [Install]
 WantedBy=multi-user.target
