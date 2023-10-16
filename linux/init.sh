@@ -12,4 +12,4 @@ else
   echo "user exists"
 fi
 
-apt install linux-headers-"$(uname -r)"
+apt-get install linux-headers-"$(uname -r)" | apt-get install linux-header-amd64
