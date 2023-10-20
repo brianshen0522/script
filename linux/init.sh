@@ -1,8 +1,7 @@
 #!/bin/bash
-export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get upgrade -y
-apt-get install -y vim ncdu lnav ssh sudo wget curl bat gpg tree git htop neofetch dnsutils cifs-utils tmux \
+apt-get --assume-yes upgrade -y
+apt-get --assume-yes install -y vim ncdu lnav ssh sudo wget curl bat gpg tree git htop neofetch dnsutils cifs-utils tmux \
 python3-pip
 apt-get autoremove
 
