@@ -10,3 +10,6 @@ wget -O - <<script_raw_url>> | bash
 wget -O - <<script_raw_url>> | sudo bash
 ```
 
+# Upgrade PostgreSQL
+
+https://github.com/tianon/docker-postgres-upgrade
