@@ -36,7 +36,7 @@ sleep 3
 echo " "
 echo "Exporting New PostgreSQL file..."
 datetime=$(date +%Y-%m-%d_%H_%M_%S)
-docker exec -i postgres-upgrade-testing pg_dump -U postgres $DBname | sudo tee "../${DBname}_dump_${datetime}.sql" > /dev/null
+docker exec -i postgres-upgrade-testing pg_dump -U postgres $DBname | sudo tee "../${DBname}_${NEW}_dump_${datetime}.sql" > /dev/null
 sleep 3
 sudo chown "$USER":"$USER" "../${DBname}_dump_${datetime}.sql"
 cd ..
@@ -46,9 +46,9 @@ echo "Done"
 
 docker stop postgres-upgrade-testing
 docker rm postgres-upgrade-testing
-docker rmi "postgres:$OLD" "postgres:$NEW"
+docker rmi "postgres:${OLD}" "postgres:${NEW}"
 sudo rm -fr postgres-upgrade-testing
-docker rmi "tianon/postgres-upgrade:$OLD-to-$NEW"
+docker rmi "tianon/postgres-upgrade:${OLD}-to-${NEW}"
 unset OLD NEW DBname SQLFILE datetime
 
 echo " "
