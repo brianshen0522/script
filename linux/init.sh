@@ -1,8 +1,8 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get --assume-yes upgrade -y
-apt-get --assume-yes install -y vim ncdu lnav ssh sudo wget curl bat gpg tree git htop neofetch dnsutils cifs-utils tmux \
+apt-get upgrade -y
+apt-get install -y vim ncdu lnav ssh sudo wget curl bat gpg tree git htop neofetch dnsutils cifs-utils tmux \
 python3-pip
 apt-get autoremove
 
@@ -18,5 +18,6 @@ timedatectl set-timezone Asia/Taipei
 localectl set-locale LANG=en_US.UTF-8
 
 apt-get install -y linux-headers-"$(uname -r)" || apt-get install -y linux-headers-amd64 || apt-get install -y linux-headers-generic
+apt-get upgrade -y
 
 unset DEBIAN_FRONTEND
