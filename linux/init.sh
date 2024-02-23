@@ -21,3 +21,15 @@ apt-get install -y linux-headers-"$(uname -r)" || apt-get install -y linux-heade
 apt-get upgrade -y
 
 unset DEBIAN_FRONTEND
+
+## tmux setting
+sudo cp /usr/share/doc/tmux/example_tmux.conf ~/.tmux.conf
+sudo chown user:user .tmux.conf
+
+sed -i 's/set -g remain-on-exit on/#set -g remain-on-exit on/g' .tmux.conf
+sed -i 's/set -g mouse on/#set -g mouse on/g' .tmux.conf
+sed -i 's/unbind -n MouseDrag1Pane/#unbind -n MouseDrag1Pane/g' .tmux.conf
+sed -i 's/unbind -Tcopy-mode MouseDrag1Pane/#unbind -Tcopy-mode MouseDrag1Pane/g' .tmux.conf
+
+curl https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux | sudo tee /etc/bash_completion.d/tmux > /dev/null
+sudo cp .tmux.conf /root/
