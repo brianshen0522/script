@@ -23,13 +23,13 @@ apt-get upgrade -y
 unset DEBIAN_FRONTEND
 
 ## tmux setting
-sudo cp /usr/share/doc/tmux/example_tmux.conf ~/.tmux.conf
-sudo chown user:user .tmux.conf
+sudo cp /usr/share/doc/tmux/example_tmux.conf /home/user/.tmux.conf
+sudo chown user:user  /home/user/.tmux.conf
 
-sed -i 's/set -g remain-on-exit on/#set -g remain-on-exit on/g' .tmux.conf
-sed -i 's/set -g mouse on/#set -g mouse on/g' .tmux.conf
-sed -i 's/unbind -n MouseDrag1Pane/#unbind -n MouseDrag1Pane/g' .tmux.conf
-sed -i 's/unbind -Tcopy-mode MouseDrag1Pane/#unbind -Tcopy-mode MouseDrag1Pane/g' .tmux.conf
+sed -i 's/set -g remain-on-exit on/#set -g remain-on-exit on/g'  /home/user/.tmux.conf
+sed -i 's/set -g mouse on/#set -g mouse on/g'  /home/user/.tmux.conf
+sed -i 's/unbind -n MouseDrag1Pane/#unbind -n MouseDrag1Pane/g'  /home/user/.tmux.conf
+sed -i 's/unbind -Tcopy-mode MouseDrag1Pane/#unbind -Tcopy-mode MouseDrag1Pane/g'  /home/user/.tmux.conf
 
 curl https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux | sudo tee /etc/bash_completion.d/tmux > /dev/null
-sudo cp .tmux.conf /root/
+sudo cp /home/user/.tmux.conf /root/
