@@ -23,6 +23,12 @@ apt-get upgrade -y
 unset DEBIAN_FRONTEND
 
 ## tmux setting
+
+if [ ! -f  "/usr/share/doc/tmux/example_tmux.conf" ]; then
+  echo "tmux example file isn't existed"
+  exit 1
+fi
+
 sudo cp /usr/share/doc/tmux/example_tmux.conf /home/user/.tmux.conf
 sudo chown user:user  /home/user/.tmux.conf
 
