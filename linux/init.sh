@@ -29,13 +29,13 @@ if [ ! -f  "/usr/share/doc/tmux/example_tmux.conf" ]; then
   exit 1
 fi
 
-sudo cp /usr/share/doc/tmux/example_tmux.conf /home/user/.tmux.conf
-sudo chown user:user  /home/user/.tmux.conf
+cp /usr/share/doc/tmux/example_tmux.conf /home/user/.tmux.conf
+chown user:user  /home/user/.tmux.conf
 
 sed -i 's/set -g remain-on-exit on/#set -g remain-on-exit on/g'  /home/user/.tmux.conf
 sed -i 's/set -g mouse on/#set -g mouse on/g'  /home/user/.tmux.conf
 sed -i 's/unbind -n MouseDrag1Pane/#unbind -n MouseDrag1Pane/g'  /home/user/.tmux.conf
 sed -i 's/unbind -Tcopy-mode MouseDrag1Pane/#unbind -Tcopy-mode MouseDrag1Pane/g'  /home/user/.tmux.conf
 
-curl https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux | sudo tee /etc/bash_completion.d/tmux > /dev/null
-sudo cp /home/user/.tmux.conf /root/
+curl https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux | tee /etc/bash_completion.d/tmux > /dev/null
+cp /home/user/.tmux.conf /root/
