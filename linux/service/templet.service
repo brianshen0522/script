@@ -12,6 +12,7 @@ ExecStartPre=/bin/sleep 15
 ExecStop=/bin/kill -15 $MAINPID
 StandardOutput=file:/var/log/service/service.log
 StandardError=file:/var/log/service/service.err.log
+SuccessExitStatus=143 # for java
 
 [Install]
 WantedBy=multi-user.target
