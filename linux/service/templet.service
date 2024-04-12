@@ -5,10 +5,11 @@ After=network.target
 [Service]
 User=root
 Group=root
-ExecStart="command start"
-WorkingDirectory=DIR_PATH
 Environment="Var=varable"
+WorkingDirectory=DIR_PATH
+ExecStart="command start"
 ExecStartPre=/bin/sleep 15
+ExecStop=/bin/kill -15 $MAINPID
 StandardOutput=file:/var/log/service/service.log
 StandardError=file:/var/log/service/service.err.log
 
