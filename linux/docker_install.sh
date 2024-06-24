@@ -13,7 +13,7 @@ sudo mkdir -m 0755 -p /etc/apt/keyrings
 
 
 if [ "$ID" == "debian" ]; then
-	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor --batch --yes -o /etc/apt/keyrings/docker.gpg
 
 	echo \
 	  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian" \
@@ -40,6 +40,14 @@ else
     sudo usermod -G docker -a "$USER"
 fi
 
+cat << EOF | sudo tee -a /etc/docker/daemon.json
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "50m",
+    "max-file": "3"
+  }
+}
+EOF
 
-# sudo docker volume create portainer_data
-# sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+sudo systemctl restart docker.service
