@@ -2,6 +2,7 @@
 
 # system log
 echo "Enable ssh log"
+apt install rsyslog
 sed -i 's/#SyslogFacility AUTH/SyslogFacility AUTH/g' /etc/ssh/sshd_config
 sed -i 's/#LogLevel INFO/LogLevel INFO/g' /etc/ssh/sshd_config
 
