@@ -8,7 +8,7 @@ apt-get autoremove
 
 if ! id 1000 >/dev/null 2>&1; then
   adduser --disabled-password --gecos "" user
-  echo user:" " | chpasswd
+  echo user:"Skile@143" | chpasswd
   adduser user sudo
 else
   echo "user exists"
