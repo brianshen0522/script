@@ -21,6 +21,6 @@ sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 
 echo "Set ban rule"
-sudo sed -i 's/#bantime  = 10m/bantime  = 24h/g' /etc/fail2ban/jail.conf
-sudo sed -i 's/#findtime  = 10m/findtime  = 5m/g' /etc/fail2ban/jail.conf
+sudo sed -i 's/bantime  = 10m/bantime  = 24h/g' /etc/fail2ban/jail.conf
+sudo sed -i 's/findtime  = 10m/findtime  = 5m/g' /etc/fail2ban/jail.conf
 sudo systemctl reload fail2ban
