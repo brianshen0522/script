@@ -13,7 +13,7 @@ sudo sed -i 's/#PermitEmptyPasswords no/PermitEmptyPasswords no/g' /etc/ssh/sshd
 sudo sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/g' /etc/ssh/sshd_config
 
 [ ! -d "$HOME/.ssh" ] && mkdir "$HOME/.ssh"
-chmod 777 "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
 
 sudo systemctl restart sshd.service
 
