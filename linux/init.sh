@@ -15,7 +15,7 @@ else
 fi
 
 timedatectl set-timezone Asia/Taipei
-localectl set-locale LANG=en_US.UTF-8
+update-locale LANG=en_US.UTF-8
 
 apt-get install -y linux-headers-"$(uname -r)" || apt-get install -y linux-headers-amd64 || apt-get install -y linux-headers-generic
 apt-get upgrade -y
