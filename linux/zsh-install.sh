@@ -9,6 +9,7 @@ sudo chsh -s "$(which zsh)" "$(whoami)"
 
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bira"/g' "$HOME/.zshrc"
 sed -i 's/plugins=(git)/plugins=(git z zsh-syntax-highlighting zsh-autosuggestions)/g' "$HOME/.zshrc"
+sed -i.bak 's|${kube_prompt}$|${kube_prompt} %{$fg[yellow]%}[%D{%H:%M:%S}]%{$reset_color%}|' "$HOME/.oh-my-zsh/themes/bira.zsh-theme"
 
 if [ -x "$(command -v docker)" ]; then
     mkdir -p ~/.oh-my-zsh/completions
